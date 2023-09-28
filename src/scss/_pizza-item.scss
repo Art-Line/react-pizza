@@ -1,0 +1,103 @@
+.pizza-item {
+    &__pic {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #232323;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    &__selector {
+        display: flex;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        flex-direction: column;
+        padding: 6px;
+        margin-bottom: 20px;
+        &-list {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            flex: 1;
+            &:first-child {
+                margin-bottom: 6px;
+            }
+            li {
+                flex: 1;
+            }
+            button {
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 14px;
+                background-color: transparent;
+                border: none;
+                padding: 8px;
+                width: 100%;
+                &:hover {
+
+                }
+                &.active {
+                    background: #ffffff;
+                    box-shadow: 0px 2px 4px rgba(0,0,0,0.04);
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    &__price {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 27px;
+        letter-spacing: 0.015em;
+    }
+    &__btn-add {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        border-radius: 30px;
+        padding: 10px 20px;
+        text-align: center;
+        transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
+        border: 1px solid #fe5f1e;
+        background-color: #fff;
+        color: #fe5f1e;
+        svg {
+            margin-right: 10px;
+        }
+        i {
+            color: #fff;
+            font-weight: 600;
+            font-style: normal;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #fe5f1e;
+            width: 22px;
+            height: 22px;
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        &:hover {
+            color: #ffffff;
+            background-color: #fe5f1e;
+            svg path {
+                fill: #ffffff;
+            }
+            i {
+                color: #fe5f1e;
+                background-color: #ffffff;
+            }
+        }
+    }
+}

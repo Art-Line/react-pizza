@@ -1,0 +1,13 @@
+.meta {
+    padding-top: 40px;
+}
+
+
+@media (min-width: 992px) {
+    .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+}
