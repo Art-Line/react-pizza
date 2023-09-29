@@ -1,32 +1,57 @@
+import { useState } from 'react';
 import { ReactComponent as IcoAdd } from '../img/plus.svg';
 
-import Item from '../img/item.jpg'
 
-function PizzaItem() {
+function PizzaItem({ imgUrl, title, sizes, price, types }) {
+
+    const pizzaTypes = ['thin', 'traditional'];
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
 
     return (
         <article className="pizza-item">
             <div className="pizza-item__pic">
                 <img
                     className="img-responsive"
-                    src={Item}
-                    alt="Pizza"
+                    src={imgUrl}
+                    alt={title}
                 />
             </div>
-            <h3 className="pizza-item__title">Pizza</h3>
+            <h3 className="pizza-item__title">{title}</h3>
             <div className="pizza-item__selector">
                 <ul className="pizza-item__selector-list">
-                    <li><button className="active" type="button">thin</button></li>
-                    <li><button type="button">traditional</button></li>
+                    {types.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveType(index)}
+                                    className={index === activeType ? 'active' : ''}
+                                >
+                                    {pizzaTypes[item]}
+                                </button>
+                            </li>
+                        )
+                    })}
                 </ul>
                 <ul className="pizza-item__selector-list">
-                    <li><button className="active" type="button">L</button></li>
-                    <li><button type="button">XL</button></li>
-                    <li><button type="button">XXL</button></li>
+                    {sizes.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveSize(index)}
+                                    className={index === activeSize ? 'active' : ''}
+                                >
+                                    {item}
+                                </button>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
             <div className="pizza-item__bottom">
-                <div className="pizza-item__price">30$</div>
+                <div className="pizza-item__price">{price}$</div>
                 <button type="button" className="pizza-item__btn-add">
                     <IcoAdd />
                     <span>Add</span>

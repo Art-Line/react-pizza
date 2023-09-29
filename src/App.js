@@ -5,7 +5,10 @@ import Header from './components/Header';
 import PizzaItem from './components/PizzaItem';
 import './scss/style.scss'
 
+import pizzas from './pizza.json';
+
 function App() {
+	
 	return (
 		<div className="wrapper">
 			<div className="container">
@@ -17,14 +20,17 @@ function App() {
 				<section className="goods">
 					<h1>All</h1>
 					<div className="pizza-catalog">
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
-						<PizzaItem />
+						{pizzas.map((item, index) => {
+							return (
+								<PizzaItem 
+									title={item.title}
+									imgUrl={item.imageUrl}
+									price={item.price}
+									sizes={item.sizes}
+									types={item.types}
+								/>
+							)
+						})}
 					</div>
 				</section>
 			</div>
