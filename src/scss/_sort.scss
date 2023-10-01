@@ -8,22 +8,34 @@
         line-height: 1em;
         display: flex;
         align-items: center;
+        &.active {
+            svg {
+                transform: rotate(0);
+            }
+        }
         svg {
-
+            transform: rotate(180deg);
         }
         b {
             padding: 0 5px;
         }
-        span {
+        button {
             cursor: pointer;
+            font-size: 16px;
             color: #fe5f1e;
+            padding: 0;
+            background-color: transparent;
+            border: none;
             border-bottom: 1px dashed #fe5f1e;
+            &:hover {
+                border-bottom-color: transparent;
+            }
         }
     }
     &__popup {
         position: absolute;
         right: 0;
-        margin-top: 15px;
+        margin-top: 25px;
         background: #ffffff;
         -webkit-box-shadow: 0px 5px 15px rgba(0,0,0,0.09);
         box-shadow: 0px 5px 15px rgba(0,0,0,0.09);
