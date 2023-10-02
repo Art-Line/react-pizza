@@ -13,14 +13,14 @@ function Sort() {
     }
 
     return (
-        <div class="sort">
-            <div class={(sortTooltip ? 'sort__label active' : 'sort__label')}>
+        <div className="sort">
+            <div className={(sortTooltip ? 'sort__label active' : 'sort__label')}>
                 <IcoArrow />
                 <b>Sort by:</b>
                 <button type="button" onClick={() => setSortTooltip(!sortTooltip)}>{sortList[activeSort]}</button>
             </div>
             {sortTooltip &&
-                <ul class="sort__popup">
+                <ul className="sort__popup">
                     {sortList.map((item, index) => {
                         return (
                             <li key={index}>

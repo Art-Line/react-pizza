@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReactComponent as IcoAdd } from '../img/plus.svg';
+import { ReactComponent as IcoAdd } from '../../img/plus.svg';
 
 
 function PizzaItem({ imgUrl, title, sizes, price, types }) {
