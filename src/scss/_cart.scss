@@ -1,0 +1,159 @@
+.cart {
+    max-width: 820px;
+    margin: 0 auto;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        &-title {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 30px;
+                height: 30px;
+                margin-right: 11px;
+                path {
+                    stroke: #232323;
+                }
+            }
+            h1 {
+                font-size: 32px;
+            }
+        }
+        &-btn {
+            cursor: pointer;
+            margin-left: 7px;
+            color: #b6b6b6;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            transition-duration: 0.2s;
+            transition-property: color;
+            svg {
+                padding-right: 5px;
+                path {
+                    transition-duration: 0.2s;
+                    transition-property: stroke;
+                }
+            }
+            &:hover {
+                color: #000000;
+                svg path {
+                    stroke: #000000;
+                }
+            }
+        }
+    }
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #f6f6f6;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        &-main {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        &-img {
+            width: 80px;
+            height: 80px;
+        }
+        &-info {
+            padding-left: 20px;
+            &-title {
+                font-weight: bold;
+                font-size: 22px;
+                line-height: 27px;
+                letter-spacing: 0.01em;
+            }
+            &-name {
+                font-size: 18px;
+                color: #8d8d8d;
+            }
+        }
+        &-count {
+            display: flex;
+            align-items: center;
+            b {
+                margin: 0 15px;
+            }
+            &-btn {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 2px solid #fe5f1e;
+                border-radius: 50%;
+                background-color: transparent;
+                transition-duration: 0.2s;
+                transition-property: background-color;
+                svg path {
+                    transition-duration: 0.2s;
+                    transition-property: fill;
+                }
+                &:hover {
+                    background-color: #fe5f1e;
+                    svg path {
+                        fill: #ffffff;
+                    }
+                }
+            }
+        }
+        &-remove {
+            &-btn {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 2px solid #d0d0d0;
+                border-radius: 50%;
+                transform: rotate(45deg);
+                background-color: transparent;
+                transition-duration: 0.2s;
+                transition-property: border, background-color;
+                svg path {
+                    fill: #d0d0d0;
+                }
+                &:hover {
+                    border: 2px solid #000000;
+                    background-color: #000000;
+                    transition-duration: 0.2s;
+                    transition-property: fill;
+                    svg path {
+                        fill: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    &__down {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .cart {
+        &__item {
+            flex-wrap: nowrap;
+            &-main {
+                width: auto;
+            }
+        }
+        &__down { 
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}

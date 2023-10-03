@@ -1,6 +1,6 @@
 function Cart() {
     return(
-        <h1>not found</h1>
+        <h1 className="ta-c">Page not found</h1>
     )
 }
 

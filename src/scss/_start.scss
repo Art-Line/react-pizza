@@ -56,6 +56,10 @@ button {
     font-family: inherit;
 }
 
+.ta-c {
+    text-align: center;
+}
+
 @media (min-width: 767px) {
     .wrapper {
         padding: 70px 15px;
@@ -64,8 +68,4 @@ button {
         padding: 0 50px;
         border-radius: 10px;
     }
-}
-
-@media (min-width: 992px) {
-
 }
