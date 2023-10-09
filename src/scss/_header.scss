@@ -1,5 +1,6 @@
 .header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f6f6f6;
@@ -13,6 +14,7 @@
         text-transform: uppercase;
         font-weight: 800;
         text-decoration: none;
+        width: 50%;
         img {
             width: 40px;
             margin-right: 10px;
@@ -52,6 +54,59 @@
         }
         &:hover {
             opacity: 0.8;
+        }
+    }
+    &__search {
+        width: 100%;
+        margin-top: 20px;
+        border: 1px solid #bcbbbb;
+        border-radius: 6px;
+        align-items: center;
+        display: flex;
+        padding: 0 15px;
+        svg {
+            flex-shrink: 0;
+            path {
+                fill: #bcbbbb;
+            }
+        }
+        &-input {
+            width: 100%;
+            border: none;
+            padding: 10px 0 10px 10px;
+            &:focus {
+                outline: none;
+            }
+        }
+        &-clear {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            svg {
+                display: block;
+                path {
+                    stroke: #bcbbbb;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .header {
+        flex-wrap: nowrap;
+        &__logo {
+            width: auto;
+        }
+        &__cart {
+            order: 1;
+        }
+        &__search {
+            margin-top: 0;
+            max-width: 400px;
+            margin-left: 20px;
+            margin-right: 20px;
         }
     }
 }

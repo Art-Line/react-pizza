@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as IcoCart } from '../img/cart.svg';
 import Logo from '../img/logo.svg'
+import Search from './Search';
 
-function Header() {
+function Header({searchValue, setSearchValue}) {
     return (
         <header className="header">
             <Link to="/" className="header__logo">
@@ -16,6 +17,7 @@ function Header() {
                     3
                 </div>
             </Link>
+            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         </header>
     )
 }
