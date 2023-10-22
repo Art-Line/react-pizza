@@ -1,38 +1,42 @@
 import { useState } from 'react';
 import { ReactComponent as IcoArrow } from '../img/arrow.svg';
+import { setSort } from '../redux/filterSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
-function Sort({ sortActive, onChangeSort }) {
+const sortList = [       // sort list 
+    {
+        name: 'popularity A-Z',
+        field: 'rating'
+    },
+    {
+        name: 'popularity Z-A',
+        field: '-rating'
+    },
+    {
+        name: 'price A-Z',
+        field: 'price'
+    },
+    {
+        name: 'price Z-A',
+        field: '-price'
+    },
+    {
+        name: 'alphabet A-Z',
+        field: 'title'
+    },
+    {
+        name: 'alphabet Z-A',
+        field: '-title'
+    }];
 
+function Sort() {
+
+    const dispatch = useDispatch();
+    const sortActive = useSelector(state => state.filters.sortActive);    // redux
     const [sortTooltip, setSortTooltip] = useState(false);  // show/hide tooltip
-    const sortList = [       // sort list 
-        {
-            name: 'popularity A-Z',
-            field: 'rating'
-        },
-        {
-            name: 'popularity Z-A',
-            field: '-rating'
-        },
-        {
-            name: 'price A-Z',
-            field: 'price'
-        },
-        {
-            name: 'price Z-A',
-            field: '-price'
-        },
-        {
-            name: 'alphabet A-Z',
-            field: 'title'
-        },
-        {
-            name: 'alphabet Z-A',
-            field: '-title'
-        }];
-
     const showSort = (obj) => {
-        onChangeSort(obj);   // show active name
-        setSortTooltip(false);  // close tooltip
+        dispatch(setSort(obj))      // to redux
+        setSortTooltip(false);       // close tooltip
     }
 
     return (
