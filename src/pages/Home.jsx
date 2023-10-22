@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaItem from '../components/PizzaItem/';
 import Skeleton from '../components/PizzaItem/Skeleton';
+import { SearchContext } from '../App';
 
-function Home({ searchValue }) {
+function Home() {
+
+    const {searchValue} = useContext(SearchContext);
 
     const [pizzasList, setPizzasList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -71,7 +74,7 @@ function Home({ searchValue }) {
                 />
             </div>
             <section className="goods">
-                <h1>All</h1>
+                <h1>{searchValue ? `Search: ${searchValue}` : 'All'}</h1>
                 <div className="pizza-catalog">
                     {isLoading ? skeleton : pizzas}
                 </div>

@@ -3,7 +3,7 @@ import { ReactComponent as IcoCart } from '../img/cart.svg';
 import Logo from '../img/logo.svg'
 import Search from './Search';
 
-function Header({searchValue, setSearchValue}) {
+function Header() {
     return (
         <header className="header">
             <Link to="/" className="header__logo">
@@ -17,7 +17,7 @@ function Header({searchValue, setSearchValue}) {
                     3
                 </div>
             </Link>
-            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+            <Search />
         </header>
     )
 }

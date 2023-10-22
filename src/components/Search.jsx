@@ -1,7 +1,12 @@
 import { ReactComponent as IcoSearch } from '../img/search.svg';
 import { ReactComponent as IcoClose } from '../img/close.svg';
+import { useContext } from 'react';
+import { SearchContext } from '../App';
 
-function Search({searchValue, setSearchValue}) {
+function Search() {
+
+    const {searchValue, setSearchValue} = useContext(SearchContext);
+
     return (
         <div className="header__search">
             <IcoSearch />
