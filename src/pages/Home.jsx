@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaItem from '../components/PizzaItem/';
@@ -18,7 +19,6 @@ function Home() {
     // const sortActive = useSelector(state => state.filters.sortActive);
     const {categoryId, sortActive} = useSelector((state) => state.filters);    // redux
 
-
     // category
     const isCategory = categoryId ? `category=${categoryId}` : '';
 
@@ -31,10 +31,9 @@ function Home() {
     const isSearch = searchValue ? `&search=${searchValue}` : '';
 
     useEffect(() => {
-        fetch(`https://62c09be2d40d6ec55cd39a5f.mockapi.io/pizzagoods?${isCategory}${isSorting}${isSearch}`)
-            .then(res => res.json())
-            .then(data => {
-                setPizzasList(data)
+        axios.get(`https://62c09be2d40d6ec55cd39a5f.mockapi.io/pizzagoods?${isCategory}${isSorting}${isSearch}`)
+            .then(res => {
+                setPizzasList(res.data)
                 setIsLoading(false);
             });
     }, [isCategory, isSorting, isSearch]);
