@@ -1,0 +1,35 @@
+.paginator {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 50px;
+    li {
+        margin: 0 5px;
+        &.selected a {
+            background-color: #fe5f1e;
+            color: #ffffff;
+        }
+    }
+    a {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fe5f1e;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #fe5f1e;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition-duration: 0.3s;
+        transition-property: background-color, color, opacity;
+        &:hover {
+            background-color: #fe5f1e;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+    }
+}

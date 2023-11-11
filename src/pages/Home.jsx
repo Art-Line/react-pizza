@@ -5,8 +5,9 @@ import Sort from '../components/Sort';
 import PizzaItem from '../components/PizzaItem/';
 import Skeleton from '../components/PizzaItem/Skeleton';
 import { SearchContext } from '../App';
-import { setCategoryId } from '../redux/filterSlice'
+import { setCategoryId, setCurrentPage } from '../redux/filterSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import Pagination from '../components/Pagination';
 
 function Home() {
 
@@ -14,10 +15,11 @@ function Home() {
     const { searchValue } = useContext(SearchContext);
     const [pizzasList, setPizzasList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    // const [pageNumber, setPageNumber] = useState(1); // paginator
 
     // const categoryId = useSelector((state) => state.filters.categoryId);
     // const sortActive = useSelector(state => state.filters.sortActive);
-    const {categoryId, sortActive} = useSelector((state) => state.filters);    // redux
+    const { categoryId, sortActive, currentPage } = useSelector((state) => state.filters);    // redux
 
     // category
     const isCategory = categoryId ? `category=${categoryId}` : '';
@@ -30,13 +32,19 @@ function Home() {
     // search
     const isSearch = searchValue ? `&search=${searchValue}` : '';
 
+
+    // paginator
+    const onChangePage = (number) => {
+        dispatch(setCurrentPage(number))
+    }
+
     useEffect(() => {
-        axios.get(`https://62c09be2d40d6ec55cd39a5f.mockapi.io/pizzagoods?${isCategory}${isSorting}${isSearch}`)
+        axios.get(`https://62c09be2d40d6ec55cd39a5f.mockapi.io/pizzagoods?page=${currentPage}&limit=4${isCategory}${isSorting}${isSearch}`)
             .then(res => {
                 setPizzasList(res.data)
                 setIsLoading(false);
             });
-    }, [isCategory, isSorting, isSearch]);
+    }, [isCategory, isSorting, isSearch, currentPage]);
 
     const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
     const pizzas = pizzasList.map((item, index) =>
@@ -65,6 +73,7 @@ function Home() {
                     {isLoading ? skeleton : pizzas}
                 </div>
             </section>
+            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
         </>
     )
 }
