@@ -3,7 +3,7 @@ import { ReactComponent as IcoArrow } from '../img/arrow.svg';
 import { setSort } from '../redux/filterSlice'
 import { useDispatch, useSelector } from 'react-redux';
 
-const sortList = [       // sort list 
+export const sortList = [       // sort list 
     {
         name: 'popularity A-Z',
         field: 'rating'

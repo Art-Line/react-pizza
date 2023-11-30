@@ -17,11 +17,10 @@ function Search() {
         [],
     );
 
-
-
     const onClickClear = () => {
-        setValue('');             // clear search input
+        setValue('');                    // clear search input
         inputRef.current.focus();       // add focus after clear
+        setSearchValue('');
     }
 
     const onChangeInput = (e) => {

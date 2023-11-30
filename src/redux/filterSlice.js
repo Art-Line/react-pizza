@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    categoryId: 0,
-    currentPage: 1,
-    sortActive: {
-        name: 'popularity A-Z',
-        field: 'raiting'
-    }
+  categoryId: 0,
+  currentPage: 1,
+  sortActive: {
+    name: 'popularity A-Z',
+    field: 'rating'
+  }
 }
 
 export const filterSlice = createSlice({
@@ -17,15 +17,20 @@ export const filterSlice = createSlice({
       state.categoryId = action.payload;
     },
     setSort(state, action) {
-        state.sortActive = action.payload;
+      state.sortActive = action.payload;
     },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
-  },
+    },
+    setFilters(state, action) {
+      state.categoryId = Number(action.payload.categoryId);
+      state.currentPage = Number(action.payload.currentPage);
+      state.sortActive = action.payload.sort;
+    }
   },
 })
 
 
-export const { setCategoryId, setSort, setCurrentPage } = filterSlice.actions
+export const { setCategoryId, setSort, setCurrentPage, setFilters} = filterSlice.actions
 
 export default filterSlice.reducer
