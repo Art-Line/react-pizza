@@ -22,7 +22,7 @@ function Home() {
     const { categoryId, sortActive, currentPage } = useSelector((state) => state.filters);    // redux
 
     // category
-    const isCategory = categoryId ? `category=${categoryId}` : '';
+    const isCategory = categoryId ? `&category=${categoryId}` : '';
 
     // sorting
     const sortDirection = (sortActive.field.charAt(0) === '-') ? 'desc' : 'asc';
