@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ReactComponent as IcoArrow } from '../img/arrow.svg';
 import { setSort } from '../redux/filterSlice'
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,8 +39,22 @@ function Sort() {
         setSortTooltip(false);       // close tooltip
     }
 
+    const sortRef = useRef();
+    useEffect(() => {
+        //console.log('mount')
+        const handleClickOutside = (event) => {
+          let path = event.composedPath().includes(sortRef.current);
+          if (!path) setSortTooltip(false);
+        };
+        document.body.addEventListener('click', handleClickOutside);
+        return () => {
+            //console.log('unmount')
+            document.body.removeEventListener('click', handleClickOutside);
+        }
+      }, []);
+
     return (
-        <div className="sort">
+        <div className="sort" ref={sortRef}>
             <div className={(sortTooltip ? 'sort__label active' : 'sort__label')}>
                 <IcoArrow />
                 <b>Sort by:</b>
