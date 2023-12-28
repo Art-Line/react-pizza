@@ -1,15 +1,33 @@
 import { useState } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 import { ReactComponent as IcoAdd } from '../../img/add.svg';
 
+import { addItem } from '../../redux/cartSlice';
 
-function PizzaItem({ imgUrl, title, sizes, price, types }) {
+const pizzaTypes = ['thin', 'traditional'];
 
-    const pizzaTypes = ['thin', 'traditional'];
+function PizzaItem({ id, imgUrl, title, sizes, price, types }) {
+    const dispatch = useDispatch();
+    const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
 
+    const addedCount = cartItem ? cartItem.count : 0;
+
+    const onClickAdd = () => {
+        const item = {
+            id,
+            title,
+            imgUrl,
+            price,
+            type: pizzaTypes[activeType],
+            size: sizes[activeSize]
+        };
+        dispatch(addItem(item));
+    }
+
     return (
-        <article className="pizza-item">
+        <article className="pizza-item" data-id={id}>
             <div className="pizza-item__pic">
                 <img
                     className="img-responsive"
@@ -52,10 +70,11 @@ function PizzaItem({ imgUrl, title, sizes, price, types }) {
             </div>
             <div className="pizza-item__bottom">
                 <div className="pizza-item__price">{price}$</div>
-                <button type="button" className="pizza-item__btn-add">
+                <button type="button" className="pizza-item__btn-add" onClick={() => onClickAdd()}>
                     <IcoAdd />
                     <span>Add</span>
-                    <i>2</i>
+                    {addedCount > 0 && <i>{addedCount}</i>}
+                    
                 </button>
             </div>
         </article>

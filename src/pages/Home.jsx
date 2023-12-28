@@ -21,7 +21,7 @@ function Home() {
     const [isLoading, setIsLoading] = useState(true);
 
     // redux
-    const { categoryId, sortActive, currentPage } = useSelector((state) => state.filters);    
+    const { categoryId, sortActive, currentPage } = useSelector((state) => state.filters);
 
     // category
     const isCategory = categoryId ? `&category=${categoryId}` : '';
@@ -89,6 +89,7 @@ function Home() {
     const pizzas = pizzasList.map((item, index) =>
         <PizzaItem
             key={index}
+            id={item.id}
             title={item.title}
             imgUrl={item.imageUrl}
             price={item.price}
@@ -103,7 +104,7 @@ function Home() {
                 <Categories
                     categoryId={categoryId}
                     onChangeCategory={(id) => dispatch(setCategoryId(id))} // to redux
-                />``
+                />
                 <Sort />
             </div>
             <section className="goods">
